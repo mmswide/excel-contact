@@ -1,0 +1,81 @@
+body {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-image: url("assets/img/background.gif");
+  font-family: "Century Gothic";
+}
+html, body {height: 100%;}
+.container, #div_container {
+  height: 90%;
+}
+.header {
+  color: white;
+}
+footer {
+  background-color: transparent !important;
+}
+.btn {
+  border-radius: 0px;
+  background-color: white;
+}
+.header {
+  text-align: center;
+}
+label {
+  color: white;
+}
+.form-group {
+  text-align: center;
+}
+.text-copyright {
+  color: white;
+  font-size: 0.9em;
+}
+.back {
+  width: 80px;
+}
+.form-control {
+  background-color: transparent;
+  border-radius: 0px;
+  color: white;
+}
+#searchText {
+  color: green;
+}
+.footer .container {
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center; /* align vertical */
+}
+
+.theme-dropdown .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+  margin: 5px 0;
+}
+
+.theme-showcase .navbar .container {
+  width: auto;
+}
+#result_title {
+  color: white;
+}
+#mytable {
+  word-break: break-all;
+  word-wrap: break-word;
+}
+
+#concat {
+  color: yellow;
+}
+
+
+@media (max-width: 768px) {
+    .btn,.btn-group {
+        width:100%;
+    }
+}

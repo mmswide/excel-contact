@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Search</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="theme.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="sticky-footer.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="assets/js/ie-emulation-modes-warning.js"></script>
+
+    <script src="assets/js/shim.js"></script>
+    <script src="assets/js/jszip.js"></script>
+    <script src="assets/js/xlsx.js"></script>
+    <script src="assets/js/parse.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="bootstrap-select-1.12.4/dist/css/bootstrap-select.css">
+
+
+  </head>
+
+  <body>
+    <div class="container theme-showcase" role="main">
+
+      <div class="header">
+        <h4>Search by:</h4>
+      </div>
+
+      <div class="form-group">
+        <label for="song" id="title">Song title:</label>
+        <input type="text" class="form-control" id="song-input">
+        <select id="mode" class="selectpicker  show-tick form-control">
+          <!-- <option>Mustard</option>
+          <option>Ketchup</option>
+          <option>Relish</option> -->
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary col-md-12 col-sm-12" onclick="search()">Search</button>
+
+    </div> <!-- /container -->
+
+    <footer class="footer">
+      <div class="container">
+        <p class="text-copyright" style="width: 77%; float: left;">Play by Ear Music School | All Rights Reserved</p>
+        <div style="width: 23%; float: left; text-align: right;">
+          <a href="index.html" >
+            <img class="back" src="assets/img/back.png" />
+          </a>
+        </div>
+      </div>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/docs.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <script src="bootstrap-select-1.12.4/dist/js/bootstrap-select.js"></script>
+
+    <script>
+      var type;
+      var selectedValue = null;
+      function showInput(visible) {
+        if (visible) {
+          $("#song-input").show();
+          $('#mode').selectpicker('hide');
+        } else {
+          $("#song-input").hide();
+          $('#mode').selectpicker('show');
+        }
+
+      }
+        $(document).ready(function () {
+          function qs() {
+            var qsparam = new Array(10);
+            var query = window.location.search.substring(1);
+            var parms = query.split('&');
+            for (var i = 0; i < parms.length; i++) {
+              var pos = parms[i].indexOf('=');
+              if (pos > 0)
+              {
+                  var key = parms[i].substring(0, pos);
+                  var val = parms[i].substring(pos + 1);
+                  qsparam[i] = val;
+              }
+          }
+          //  text1.value = qsparam[0];
+          //  text2.value = qsparam[1];
+          //  text3.value = qsparam[2];
+          //  text4.value = qsparam[3];
+          var param = qsparam[0];
+          this.type = param;
+          // $('#mode').hide();
+          switch (param) {
+            case "title":
+              document.getElementById('title').innerHTML = 'Song title';
+              showInput(true);
+              break;
+            case "artist":
+              document.getElementById('title').innerHTML = 'Artiste';
+              showInput(true);
+              break;
+            case "genre":
+              document.getElementById('title').innerHTML = 'Song genre/Language';
+              showInput(false);
+              break;
+            case "signature":
+              document.getElementById('title').innerHTML = 'Key Signature';
+              showInput(false);
+              break;
+            case "difficulty":
+              document.getElementById('title').innerHTML = 'Song difficulty';
+              showInput(false);
+              break;
+            case "keyword":
+              document.getElementById('title').innerHTML = 'Keyword search';
+              showInput(true);
+              break;
+            case "serial":
+              document.getElementById('title').innerHTML = 'Serial No';
+              showInput(true);
+              break;
+
+            default:
+              break;
+
+          }
+
+          }
+          var splitstr = qs();
+          getFileObject('content.xlsx', function (fileObject) {
+               console.log("fileObject", fileObject);
+
+               do_file(fileObject, function(jsonObj) {
+                 console.log("input json string", jsonObj);
+                 var jsonArray = jsonObj[Object.keys(jsonObj)[0]];
+                 switch (type) {
+                   case "title":
+                   case "artist":
+                   case "keyword":
+                   case "serial":
+                     break;
+                   case "genre":
+                   $("#song-input").hide();
+                   $("#mode").show();
+                    // var genre = _.keys(_.countBy(jsonObj, function(data) { return data["Genre"]; }));
+                    var genreNames = groupBy(jsonArray, 'Genre').sort();
+
+                    // for (var idx in genreNames) {
+                    //     $("#mode").append('<option value=' + genreNames[idx] + '>' + genreNames[idx] + '</option>');
+                    //     console.log("gefdaf", genreNames[idx]);
+                    // }
+                    // $('#mode').selectpicker('refresh');
+                    appendSelectValues(genreNames);
+
+                     break;
+                   case "signature":
+                     var keyNames = groupBy(jsonArray, 'Key').sort();
+                     appendSelectValues(keyNames);
+                     break;
+                   case "difficulty":
+                     var difficultyNames = groupBy(jsonArray, 'Difficulty').sort();
+                     appendSelectValues(difficultyNames);
+                     break;
+                   default:
+                      break;
+                 }
+               });
+
+          });
+      });
+
+      $('#mode').change(function () {
+          var selectedText = $(this).find("option:selected").text();
+          selectedValue = selectedText;
+          console.log("selected value", selectedValue);
+      });
+
+      function appendSelectValues(array) {
+        for (var idx in array) {
+            $("#mode").append('<option value=' + array[idx] + '>' + array[idx] + '</option>');
+            if(idx == 0) {
+              selectedValue = array[idx];
+              console.log("test",selectedValue);
+            }
+        }
+        $('#mode').val(array[0]);
+        $('#mode').selectpicker('refresh');
+      }
+
+      function groupBy(items,propertyName)
+      {
+          var result = [];
+          $.each(items, function(index, item) {
+             if ($.inArray(item[propertyName], result)==-1) {
+                result.push(item[propertyName]);
+             }
+          });
+          return result;
+      }
+
+      function search() {
+        console.log("search", selectedValue);
+        var inputText = document.getElementById("song-input").value;
+        if(selectedValue == null) {
+          if (inputText == "" || inputText == null) {
+            alert("Please input search text");
+            return;
+          } else {
+            selectedValue = inputText;
+          }
+        }
+        console.log("input", inputText);
+        window.location.href = "result.html?type=" + this.type+"&value="+selectedValue;
+      }
+
+
+    </script>
+  </body>
+</html>
