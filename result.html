@@ -197,7 +197,11 @@
     function display(array) {
       var tbl=$("<table/>").attr("id","mytable");
       $("#div_container").append(tbl);
-      $("#div_container").css({"border": "1px white solid", "padding": "5px", "color": "white", "overflow-y": "auto"});
+      $("#div_container").css({"border": "1px white solid",
+                              "padding": "5px",
+                              "color": "white",
+                              "overflow-y": "auto",
+                              "background-color": "#212121"});
       for(var i=0;i<array.length;i++)
       {
           var tr="<tr>";
