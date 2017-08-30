@@ -1,14 +1,10 @@
 body {
-  margin-bottom: 40px;
-  padding-top: 30px;
-  padding-bottom: 30px;
   background-image: url("assets/img/background.gif");
   font-family: "Century Gothic";
 }
 
-html, body {height: 100%;}
-.container, #div_container {
-  height: 93%;
+.container {
+  padding: 40px;
 }
 .header {
   color: white;
@@ -44,11 +40,6 @@ label {
 #searchText {
   color: green;
 }
-.footer .container {
-  display: flex;
-  justify-content: center; /* align horizontal */
-  align-items: center; /* align vertical */
-}
 
 .theme-dropdown .dropdown-menu {
   position: static;
@@ -63,6 +54,9 @@ label {
 /*.theme-showcase .navbar .container {
   width: auto;
 }*/
+#div_container {
+  height: 93%;
+}
 #result_title {
   color: white;
 }
@@ -75,9 +69,41 @@ label {
   color: yellow;
 }
 
+.footer-row{
+  margin: 0;
+}
+@media (min-width: 992px) {
+  .container {
+      width: 100%;
+  }
+  .back {
+    width: 120px;
+  }
+}
+@media screen and (max-width: 992px) and (min-width: 640px) {
+  .back {
+    width: 100px;
+  }
+}
+@media (min-width: 414px) {
+  .back {
+    width: 80px;
+  }
+}
 
 @media (max-width: 768px) {
     .btn,.btn-group {
         width:100%;
     }
+}
+
+@media (min-width: 768px) {
+  .container {
+      width: 100%;
+  }
+}
+
+
+@media screen and (max-width: 640) and (min-width: 320px) {
+
 }

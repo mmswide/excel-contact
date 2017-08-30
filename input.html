@@ -46,7 +46,7 @@
     <div class="container theme-showcase" role="main">
 
       <div class="header">
-        <h4>Search by:</h4>
+        <label for="title">Search by:</label>
       </div>
 
       <div class="form-group">
@@ -59,12 +59,12 @@
         </select>
       </div>
 
-      <button type="submit" class="btn btn-primary col-md-12 col-sm-12" onclick="search()">Search</button>
+      <button id="search_button" type="submit" class="btn btn-primary col-md-12 col-sm-12" onclick="search()">Search</button>
 
     </div> <!-- /container -->
 
     <footer class="footer">
-      <div class="container">
+      <div class="footer-container">
         <p class="text-copyright" style="width: 77%; float: left;">Play by Ear Music School | All Rights Reserved</p>
         <div style="width: 23%; float: left; text-align: right;">
           <a href="index.html" >
@@ -198,6 +198,8 @@
                });
 
           });
+          $("#song-input").focus();
+
       });
 
       $('#mode').change(function () {
@@ -243,6 +245,12 @@
         console.log("input", inputText);
         window.location.href = "result.html?type=" + this.type+"&value="+selectedValue;
       }
+
+      $("#song-input").keyup(function(event){
+          if(event.keyCode == 13){
+              $("#search_button").click();
+          }
+      });
 
 
     </script>
