@@ -1,6 +1,6 @@
 body {
   background-image: url("assets/img/background.gif");
-  font-family: "Century Gothic";
+  font-family: "Arial";
 }
 
 .container {
@@ -30,14 +30,14 @@ label {
   font-size: 0.9em;
 }
 .back {
-  width: 80%;
+  width: 80px;
 }
 .form-control {
   background-color: transparent;
   border-radius: 0px;
   color: white;
 }
-#searchText {
+#searchText, #title {
   color: green;
 }
 
@@ -87,7 +87,12 @@ label {
 }
 @media (min-width: 414px) {
   .back {
-    width: 80px;
+    width: 90px;
+  }
+}
+@media (min-width: 1024px) {
+  .back {
+    visibility: hidden;
   }
 }
 
