@@ -37,9 +37,9 @@ label {
   border-radius: 0px;
   color: white;
 }
-#searchText {
+/*#searchText {
   color: green;
-}
+}*/
 
 .theme-dropdown .dropdown-menu {
   position: static;
@@ -85,6 +85,7 @@ label {
     width: 100px;
   }
 }
+
 @media (min-width: 414px) {
   .back {
     width: 90px;
