@@ -50,7 +50,10 @@
       </div>
 
       <div class="form-group">
-        <label for="song" id="title">Song title:</label>
+        <div class="">
+          <label for="song" id="title">Song title:</label>
+        </div>
+
         <input type="text" class="form-control" id="song-input">
         <select id="mode" class="selectpicker  show-tick form-control">
           <!-- <option>Mustard</option>
@@ -58,19 +61,27 @@
           <option>Relish</option> -->
         </select>
       </div>
+      <div class="button-center">
+        <button id="search_button" type="submit" class="btn btn-primary col-md-12 col-sm-12" onclick="search()">Search</button>
+      </div>
 
-      <button id="search_button" type="submit" class="btn btn-primary col-md-12 col-sm-12" onclick="search()">Search</button>
+      <div class="form-group input-back">
+        <form action="index.html">
+            <input type="submit" class="input-back" value="Back to Main Menu" />
+        </form>
+      </div>
+
 
     </div> <!-- /container -->
 
     <footer class="footer">
       <div class="footer-container">
         <p class="text-copyright" style="width: 77%; float: left;">Play by Ear Music School | All Rights Reserved</p>
-        <div style="width: 23%; float: left; text-align: right;">
+        <!-- <div style="width: 23%; float: left; text-align: right;">
           <a href="index.html" >
             <img class="back" src="assets/img/back.png" />
           </a>
-        </div>
+        </div> -->
       </div>
     </footer>
 

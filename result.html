@@ -38,23 +38,21 @@
   </head>
 
   <body style="height: 92%;">
-    <div class="container theme-showcase" style="height: 100%;" role="main">
+    <div class="result-container theme-showcase" style="height: 100%;" role="main">
 
       <div>
-        <h5 id="result_title">Result for <span id="searchText"></span> in <span id="title"></span></h5>
+        <p id="result_title">Result for <span id="searchText"></span> in <span id="title"></span></p>
+        <p class="result-copyright">Play by Ear Music School | All Rights Reserved</p>
       </div>
       <div id="div_container">
       </div>
 
     </div> <!-- /container -->
     <footer class="footer">
-      <div class="footer-container">
-        <p class="text-copyright" style="width: 77%; float: left;">Play by Ear Music School | All Rights Reserved</p>
-        <div style="width: 23%; float: left; text-align: right;">
-          <a href="index.html" >
-            <img class="back" src="assets/img/back.png" />
-          </a>
-        </div>
+      <div class="footer-container" style="float: right;">
+        <form action="index.html">
+            <input type="submit" class="result-back" value="Back to Main Menu" />
+        </form>
       </div>
     </footer>
 

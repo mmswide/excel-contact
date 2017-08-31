@@ -23,6 +23,11 @@ body {
   display: flex;
   align-items: center;
 }
+.result-back {
+  background: transparent;
+  border: 0;
+  color: white;
+}
 /*.footer-container {
   padding: 40px 40px 30px 40px;
 }*/
