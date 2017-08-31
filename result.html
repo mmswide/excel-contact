@@ -91,7 +91,8 @@
         this.type = param;
         this.value = qsparam[1];
         // $('#mode').hide();
-        document.getElementById('searchText').innerHTML = this.value;
+        var str = this.value.replace(/%20/g, " ");
+        document.getElementById('searchText').innerHTML = str;
         switch (param) {
           case "title":
             document.getElementById('title').innerHTML = 'Song title';
@@ -178,7 +179,8 @@
                    break;
                  case "difficulty":
                    var filtered=jsonArray.filter(function(item){
-                       return item["Difficulty"].toUpperCase().includes((this.value).toUpperCase());
+                     var strstr = this.value.replace(/%20/g, " ");
+                       return item["Difficulty"].toUpperCase().includes((strstr).toUpperCase());
                    });
 
                    display(filtered);
