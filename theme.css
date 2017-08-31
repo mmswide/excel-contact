@@ -37,7 +37,7 @@ label {
   border-radius: 0px;
   color: white;
 }
-#searchText, #title {
+#searchText {
   color: green;
 }
 
@@ -88,11 +88,6 @@ label {
 @media (min-width: 414px) {
   .back {
     width: 90px;
-  }
-}
-@media (min-width: 1024px) {
-  .back {
-    visibility: hidden;
   }
 }
 
