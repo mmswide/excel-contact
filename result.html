@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Theme Template for Bootstrap</title>
+    <title>Result</title>
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
@@ -47,14 +47,20 @@
       <div id="div_container">
       </div>
 
-    </div> <!-- /container -->
-    <footer class="footer">
       <div class="footer-container" style="float: right;">
         <form action="index.html">
             <input type="submit" class="result-back" value="Back to Main Menu" />
         </form>
       </div>
-    </footer>
+
+    </div> <!-- /container -->
+    <!-- <footer class="footer">
+      <div class="footer-container" style="float: right;">
+        <form action="index.html">
+            <input type="submit" class="result-back" value="Back to Main Menu" />
+        </form>
+      </div>
+    </footer> -->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -171,8 +177,9 @@
                    display(filtered);
                    break;
                  case "signature":
+                    console.log("####", this.value);
                    var filtered=jsonArray.filter(function(item){
-                       return item["Key"].toUpperCase().includes((this.value).toUpperCase());
+                       return item["Key"].toUpperCase()===((this.value).toUpperCase());
                    });
 
                    display(filtered);

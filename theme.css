@@ -86,7 +86,7 @@ label {
 }
 
 #concat {
-  color: yellow;
+  color: white;
 }
 
 .footer-row{
@@ -107,7 +107,7 @@ label {
 }
 @media screen and (max-width: 414px) and (min-width: 320px) {
   .result-container, .footer, .result-copyright, .result-back {
-    font-size: 11px;
+    font-size: 14px;
   }
   .container, .footer {
     font-size: 14px;
