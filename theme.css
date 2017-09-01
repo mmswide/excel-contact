@@ -92,6 +92,9 @@ label {
 .footer-row{
   margin: 0;
 }
+.body-container {
+  height: 92%;
+}
 @media (min-width: 992px) {
   .container {
       width: 100%;
@@ -111,6 +114,15 @@ label {
   }
   .container, .footer {
     font-size: 14px;
+  }
+}
+
+@media (max-width: 320px){
+  .body-container {
+    height: 88%;
+  }
+  #div_container {
+    height: 90%;
   }
 }
 
