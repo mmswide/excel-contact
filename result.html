@@ -190,7 +190,7 @@
                  case "difficulty":
                    var filtered=jsonArray.filter(function(item){
                      var strstr = this.value.replace(/%20/g, " ");
-                       return item["Difficulty"].toUpperCase().includes((strstr).toUpperCase());
+                       return item["Difficulty"].toUpperCase()===((strstr).toUpperCase());
                    });
 
                    display(filtered);
