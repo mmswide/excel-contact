@@ -168,7 +168,7 @@
                    break;
                  case "serial":
                    var filtered=jsonArray.filter(function(item){
-                       return item["Serial No"].toUpperCase()===((this.value).toUpperCase());
+                       return item["Serial No"].toUpperCase().includes((this.value).toUpperCase());
                    });
 
                    display(filtered);
