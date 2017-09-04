@@ -167,26 +167,41 @@
                    break;
                  case "keyword":
                    var filtered=jsonArray.filter(function(item){
-                       return item["Song title"].toUpperCase().includes((this.value).toUpperCase()) ||
-                             item["Artiste"].toUpperCase().includes((this.value).toUpperCase()) ||
-                             item["Serial No"].toUpperCase().includes((this.value).toUpperCase()) ||
-                             item["Genre"].toUpperCase().includes((this.value).toUpperCase()) ||
-                             item["Key"].toUpperCase().includes((this.value).toUpperCase()) ||
-                             item["Difficulty"].toUpperCase().includes((this.value).toUpperCase());
+                     if (item["Artiste"].toUpperCase().indexOf((this.value).toUpperCase()) != -1 ||
+                          item["Song title"].toUpperCase().indexOf((this.value).toUpperCase()) != -1 ||
+                          item["Serial No"].toUpperCase().indexOf((this.value).toUpperCase()) != -1 ||
+                          item["Genre"].toUpperCase().indexOf((this.value).toUpperCase()) != -1 ||
+                          item["Key"].toUpperCase().indexOf((this.value).toUpperCase()) != -1 ||
+                          item["Difficulty"].toUpperCase().indexOf((this.value).toUpperCase()) != -1 ||
+                   ) {
+                       return item;
+                     }
+                      //  return item["Song title"].toUpperCase().includes((this.value).toUpperCase()) ||
+                      //        item["Artiste"].toUpperCase().includes((this.value).toUpperCase()) ||
+                      //        item["Serial No"].toUpperCase().includes((this.value).toUpperCase()) ||
+                      //        item["Genre"].toUpperCase().includes((this.value).toUpperCase()) ||
+                      //        item["Key"].toUpperCase().includes((this.value).toUpperCase()) ||
+                      //        item["Difficulty"].toUpperCase().includes((this.value).toUpperCase());
                    });
 
                    display(filtered);
                    break;
                  case "serial":
                    var filtered=jsonArray.filter(function(item){
-                       return item["Serial No"].toUpperCase().includes((this.value).toUpperCase());
+                     if (item["Serial No"].toUpperCase().indexOf((this.value).toUpperCase()) != -1) {
+                       return item;
+                     }
+                      //  return item["Serial No"].toUpperCase().includes((this.value).toUpperCase());
                    });
 
                    display(filtered);
                    break;
                  case "genre":
                    var filtered=jsonArray.filter(function(item){
-                       return item["Genre"].toUpperCase().includes((this.value).toUpperCase());
+                     if (item["Genre"].toUpperCase().indexOf((this.value).toUpperCase()) != -1) {
+                       return item;
+                     }
+                      //  return item["Genre"].toUpperCase().includes((this.value).toUpperCase());
                    });
 
                    display(filtered);
