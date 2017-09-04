@@ -98,7 +98,7 @@ var do_file = (function(cb) {
     // var f = files[0];
     // convert into File from blob
     // var f = new File([files], "conent.xlsx", {type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", lastModified: Date.now()});
-    var f = new File([files], "conent.xlsx");
+
     var reader = new FileReader();
     reader.onload = function(e) {
       if(typeof console !== 'undefined') console.log("onload", new Date(), rABS, use_worker);
@@ -108,8 +108,16 @@ var do_file = (function(cb) {
       if(use_worker) xw(data, process_wb);
       else process_wb(X.read(data, {type: rABS ? 'binary' : 'array'}), cb);
     };
-    if(rABS) reader.readAsBinaryString(f);
-    else reader.readAsArrayBuffer(f);
+    try {
+      var f = new File([files], "conent.xlsx");
+
+      if(rABS) reader.readAsBinaryString(f);
+      else reader.readAsArrayBuffer(f);
+    } catch (e) {      
+      if(rABS) reader.readAsBinaryString(files);
+      else reader.readAsArrayBuffer(files);
+    }
+
   };
 })();
 
