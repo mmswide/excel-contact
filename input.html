@@ -213,6 +213,8 @@
           var selectedText = $(this).find("option:selected").text();
           selectedValue = selectedText;
           console.log("selected value", selectedValue);
+          selectedValue = selectedValue.replace(/&/g, "-");
+          console.log("selected", selectedValue);
       });
 
       function appendSelectValues(array) {
