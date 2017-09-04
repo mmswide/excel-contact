@@ -81,9 +81,11 @@
       $(document).ready(function () {
         function qs() {
           var qsparam = new Array(10);
+          // var query = window.location.search.substring(1);
           var query = getQuery(window.location.href);
           console.log("query", query);
           var parms = query.split('&');
+
           for (var i = 0; i < parms.length; i++) {
             var pos = parms[i].indexOf('=');
             if (pos > 0)
@@ -100,6 +102,7 @@
         var param = qsparam[0];
         this.type = param;
         this.value = qsparam[1];
+        console.log("VALUE", this.value);
         // $('#mode').hide();
         var str = this.value.replace(/%20/g, " ");
         document.getElementById('searchText').innerHTML = str;
@@ -188,6 +191,7 @@
                    display(filtered);
                    break;
                  case "difficulty":
+                 console.log("value", this.value);
                    var filtered=jsonArray.filter(function(item){
                      var strstr = this.value.replace(/%20/g, " ");
                        return item["Difficulty"].toUpperCase()===((strstr).toUpperCase());
