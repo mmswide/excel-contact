@@ -45,6 +45,9 @@
         <p class="result-copyright">Play by Ear Music School | All Rights Reserved</p>
       </div>
       <div id="div_container">
+        <div class="no-result">
+          No result
+        </div>
       </div>
 
       <div class="footer-container" style="float: right; padding-top: 5px;">
@@ -53,14 +56,7 @@
         </form>
       </div>
 
-    </div> <!-- /container -->
-    <!-- <footer class="footer">
-      <div class="footer-container" style="float: right;">
-        <form action="index.html">
-            <input type="submit" class="result-back" value="Back to Main Menu" />
-        </form>
-      </div>
-    </footer> -->
+    </div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -83,7 +79,6 @@
           var qsparam = new Array(10);
           // var query = window.location.search.substring(1);
           var query = getQuery(window.location.href);
-          console.log("query", query);
           var parms = query.split('&');
 
           for (var i = 0; i < parms.length; i++) {
@@ -97,16 +92,11 @@
                 console.log("PARAM", parms[i]);
             }
         }
-        //  text1.value = qsparam[0];
-        //  text2.value = qsparam[1];
-        //  text3.value = qsparam[2];
-        //  text4.value = qsparam[3];
         var param = qsparam[0];
         this.type = param;
         var strstr = qsparam[1].replace(/-/g, "&");
         this.value = strstr;
-        console.log("VALUE", this.value);
-        // $('#mode').hide();
+
         var str = this.value.replace(/%20/g, " ");
         document.getElementById('searchText').innerHTML = str;
         switch (param) {
@@ -138,6 +128,7 @@
         }
 
         }
+        $(".no-result").hide();
         var splitstr = qs();
         getFileObject('content.xlsx', function (fileObject) {
              console.log("fileObject", fileObject);
@@ -160,7 +151,6 @@
                      if (item["Artiste"].toUpperCase().indexOf((this.value).toUpperCase()) != -1) {
                        return item;
                      }
-                      //  return item["Artiste"].toUpperCase().includes((this.value).toUpperCase());
                    });
 
                    display(filtered);
@@ -176,12 +166,6 @@
                    ) {
                        return item;
                      }
-                      //  return item["Song title"].toUpperCase().includes((this.value).toUpperCase()) ||
-                      //        item["Artiste"].toUpperCase().includes((this.value).toUpperCase()) ||
-                      //        item["Serial No"].toUpperCase().includes((this.value).toUpperCase()) ||
-                      //        item["Genre"].toUpperCase().includes((this.value).toUpperCase()) ||
-                      //        item["Key"].toUpperCase().includes((this.value).toUpperCase()) ||
-                      //        item["Difficulty"].toUpperCase().includes((this.value).toUpperCase());
                    });
 
                    display(filtered);
@@ -191,7 +175,6 @@
                      if (item["Serial No"].toUpperCase().indexOf((this.value).toUpperCase()) != -1) {
                        return item;
                      }
-                      //  return item["Serial No"].toUpperCase().includes((this.value).toUpperCase());
                    });
 
                    display(filtered);
@@ -201,7 +184,6 @@
                      if (item["Genre"].toUpperCase().indexOf((this.value).toUpperCase()) != -1) {
                        return item;
                      }
-                      //  return item["Genre"].toUpperCase().includes((this.value).toUpperCase());
                    });
 
                    display(filtered);
@@ -231,6 +213,11 @@
     });
 
     function display(array) {
+      if (array.length > 0) {
+        $(".no-result").hide();
+      } else {
+        $(".no-result").show();
+      }
       var tbl=$("<table/>").attr("id","mytable");
       $("#div_container").append(tbl);
       $("#div_container").css({"border": "1px white solid",
@@ -238,6 +225,7 @@
                               "color": "white",
                               "overflow-y": "auto",
                               "background-color": "#212121"});
+
       for(var i=0;i<array.length;i++)
       {
           var tr="<tr>";
