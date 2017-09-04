@@ -158,7 +158,7 @@
                    var filtered=jsonArray.filter(function(item){
                        return item["Song title"].toUpperCase().includes((this.value).toUpperCase()) ||
                              item["Artiste"].toUpperCase().includes((this.value).toUpperCase()) ||
-                             item["Serial No"].toUpperCase()===((this.value).toUpperCase()) ||
+                             item["Serial No"].toUpperCase().includes((this.value).toUpperCase()) ||
                              item["Genre"].toUpperCase().includes((this.value).toUpperCase()) ||
                              item["Key"].toUpperCase().includes((this.value).toUpperCase()) ||
                              item["Difficulty"].toUpperCase().includes((this.value).toUpperCase());
