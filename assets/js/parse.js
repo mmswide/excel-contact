@@ -74,11 +74,11 @@ var process_wb = (function() {
 var do_file = (function(cb) {
   console.log("dofile");
   var rABS = typeof FileReader !== "undefined" && (FileReader.prototype||{}).readAsBinaryString;
-  var domrabs = document.getElementsByName("userabs")[0];
-  if(!rABS) domrabs.disabled = !(domrabs.checked = false);
-  var use_worker = typeof Worker !== 'undefined';
-  var domwork = document.getElementsByName("useworker")[0];
-  if(!use_worker) domwork.disabled = !(domwork.checked = false);
+  // var domrabs = document.getElementsByName("userabs")[0];
+  // if(!rABS) domrabs.disabled = !(domrabs.checked = false);
+  // var use_worker = typeof Worker !== 'undefined';
+  // var domwork = document.getElementsByName("useworker")[0];
+  // if(!use_worker) domwork.disabled = !(domwork.checked = false);
   var xw = function xw(data, cb) {
     var worker = new Worker(XW.worker);
     worker.onmessage = function(e) {
