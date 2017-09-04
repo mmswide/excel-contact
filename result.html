@@ -148,14 +148,19 @@
                switch (this.type) {
                  case "title":
                   var filtered=jsonArray.filter(function(item){
-                      return item["Song title"].toUpperCase().includes((this.value).toUpperCase());
+                    if (item["Song title"].toUpperCase().indexOf((this.value).toUpperCase()) != -1) {
+                      return item;
+                    }
                   });
 
                   display(filtered);
                   break;
                  case "artist":
                    var filtered=jsonArray.filter(function(item){
-                       return item["Artiste"].toUpperCase().includes((this.value).toUpperCase());
+                     if (item["Artiste"].toUpperCase().indexOf((this.value).toUpperCase()) != -1) {
+                       return item;
+                     }
+                      //  return item["Artiste"].toUpperCase().includes((this.value).toUpperCase());
                    });
 
                    display(filtered);
