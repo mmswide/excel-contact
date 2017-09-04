@@ -97,7 +97,8 @@ var do_file = (function(cb) {
     use_worker = false;
     // var f = files[0];
     // convert into File from blob
-    var f = new File([files], "conent.xlsx", {type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", lastModified: Date.now()});
+    // var f = new File([files], "conent.xlsx", {type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", lastModified: Date.now()});
+    var f = new File([files], "conent.xlsx");
     var reader = new FileReader();
     reader.onload = function(e) {
       if(typeof console !== 'undefined') console.log("onload", new Date(), rABS, use_worker);
